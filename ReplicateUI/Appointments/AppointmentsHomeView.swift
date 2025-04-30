@@ -12,18 +12,18 @@ struct AppointmentsHomeView: View {
     @State private var displayMessage = ""
     
     var body: some View {
-
-        Text("AppointmentsHome")
         
         Button("Click Me"){
             let now = Date()
             print(now)
+            displayMessage = now.description
         }
         
-        Text("Results")
+        Text("Results: \(displayMessage)")
+
     }
 }
 
 #Preview {
-    AppointmentsHome()
+    AppointmentsHomeView()
 }

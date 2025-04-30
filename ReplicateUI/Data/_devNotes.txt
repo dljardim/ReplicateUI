@@ -1,0 +1,9 @@
+_devNotes.txt
+
+user defaults
+
+file manager
+
+codable
+
+core data

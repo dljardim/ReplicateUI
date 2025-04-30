@@ -6,17 +6,21 @@
 //
 
 import SwiftUI
-
+// TODO: move this into the UserManager file
 struct ContentView: View {
+    @EnvironmentObject private var userStore: UserStore
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        VStack {
-//            NavigationHomeView()
-            DragonQuestView()
+        NavigationStack(path: $path){
+            UserListView()
+                .navigationDestination(for: User.self){ user in
+                    UserDetailView(user:user)
+                }
         }
-        .padding()
+        
     }
-}
 
-#Preview {
-    ContentView()
 }
+    
+

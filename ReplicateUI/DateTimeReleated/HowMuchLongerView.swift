@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct HowMuchLongerView: View {
+    @State private var dateSelected: Date = Date()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("HowMuchLongerView")
+        DatePicker("Date", selection: $dateSelected)
     }
 }
 

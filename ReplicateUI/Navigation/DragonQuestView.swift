@@ -175,7 +175,7 @@ struct MagicButtonContainerView: View {
         }
         .padding()
 
-    }.padding()
+    }
     
 }
 

@@ -6,8 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		33C783B92DBD70BC00862762 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		33C7836F2DB7DA7300862762 /* ReplicateUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReplicateUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33C783AF2DBD5D3B00862762 /* ReplicateUITerminal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReplicateUITerminal.xcodeproj; path = ../ReplicateUITerminal/ReplicateUITerminal.xcodeproj; sourceTree = SOURCE_ROOT; };
+		33C783BB2DBD70BC00862762 /* ReplicateUITerminal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReplicateUITerminal; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -26,12 +40,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		33C783B82DBD70BC00862762 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		33C783662DB7DA7300862762 = {
 			isa = PBXGroup;
 			children = (
+				33C783AF2DBD5D3B00862762 /* ReplicateUITerminal.xcodeproj */,
 				33C783712DB7DA7300862762 /* ReplicateUI */,
 				33C783702DB7DA7300862762 /* Products */,
 			);
@@ -41,6 +63,14 @@
 			isa = PBXGroup;
 			children = (
 				33C7836F2DB7DA7300862762 /* ReplicateUI.app */,
+				33C783BB2DBD70BC00862762 /* ReplicateUITerminal */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33C783B22DBD5D3C00862762 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +100,25 @@
 			productReference = 33C7836F2DB7DA7300862762 /* ReplicateUI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		33C783BA2DBD70BC00862762 /* ReplicateUITerminal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33C783BF2DBD70BC00862762 /* Build configuration list for PBXNativeTarget "ReplicateUITerminal" */;
+			buildPhases = (
+				33C783B72DBD70BC00862762 /* Sources */,
+				33C783B82DBD70BC00862762 /* Frameworks */,
+				33C783B92DBD70BC00862762 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReplicateUITerminal;
+			packageProductDependencies = (
+			);
+			productName = ReplicateUITerminal;
+			productReference = 33C783BB2DBD70BC00862762 /* ReplicateUITerminal */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +130,9 @@
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					33C7836E2DB7DA7300862762 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					33C783BA2DBD70BC00862762 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
@@ -97,9 +149,16 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 33C783702DB7DA7300862762 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 33C783B22DBD5D3C00862762 /* Products */;
+					ProjectRef = 33C783AF2DBD5D3B00862762 /* ReplicateUITerminal.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				33C7836E2DB7DA7300862762 /* ReplicateUI */,
+				33C783BA2DBD70BC00862762 /* ReplicateUITerminal */,
 			);
 		};
 /* End PBXProject section */
@@ -116,6 +175,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		33C7836B2DB7DA7300862762 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33C783B72DBD70BC00862762 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,6 +368,32 @@
 			};
 			name = Release;
 		};
+		33C783C02DBD70BC00862762 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8FPG6RGCU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		33C783C12DBD70BC00862762 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8FPG6RGCU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -319,6 +411,15 @@
 			buildConfigurations = (
 				33C7837B2DB7DA7500862762 /* Debug */,
 				33C7837C2DB7DA7500862762 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33C783BF2DBD70BC00862762 /* Build configuration list for PBXNativeTarget "ReplicateUITerminal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33C783C02DBD70BC00862762 /* Debug */,
+				33C783C12DBD70BC00862762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
