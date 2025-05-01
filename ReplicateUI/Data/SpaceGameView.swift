@@ -20,9 +20,37 @@
 
 import SwiftUI
 
+enum ShipColor{
+    case red{1}
+    case green
+    case blue
+    
+    var id: Self {self}
+}
+
 struct SpaceGameView: View {
+    
+    @State private var shipColor: ShipColor = ShipColor.red
+    
+    var shipColorKey = "shipColorKey"
+    
+    func getUserDefaults(){
+    }
+    
+    func setUserDefaults(){
+        
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Picker("Ship Color", selection: $shipColor){
+                Text("red").tag(ShipColor.red)
+                Text("green").tag(ShipColor.green)
+                Text("blue").tag(ShipColor.blue)
+            }.onChange(of: shipColor){
+                UserDefaults.standard.set(shipColor, forKey: shipColorKey)
+            }
+        }.onAppear(perform: getUserDefaults)
     }
 }
 
