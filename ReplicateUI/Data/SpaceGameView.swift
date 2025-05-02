@@ -1,59 +1,112 @@
-//
-//  SpaceGameView.swift
-//  ReplicateUI
-//
-//  Created by Damian Jardim on 4/30/25.
-//
 /*
  
- 🧑‍🚀 You’re building a space game. The player can choose their spaceship color — Red, Blue, or Green — from a Settings screen.
- Your mission:
- Save the selected color so when the player reopens the app, it stays the same.
- 🚀 Exercise 1: Save & Load a spaceship color using UserDefaults.
- Write the Swift code for:
+ Space Ship Challenge
+ 
  Saving a string like "Red" as the selected spaceship color.
  Reading it back and printing it.
  You’re allowed to use UserDefaults.standard.
- Ready? Send me your code, and I’ll review and help you improve it!
  
+ --------------
+ SpaceGameViewAdditions1 -
+ 
+ Update your app so the spaceship actually changes color when you tap the buttons (instead of just showing the name).
+ Keep your UserDefaults usage, but now visually reflect the color on the spaceship rectangle.
+
+ add fallback defaults if no color is saved
+ --------------
  */
 
 import SwiftUI
 
-enum ShipColor{
-    case red{1}
-    case green
-    case blue
+struct TypeWriterText: View, Animatable {
+    var string: String
+    var count = 0
     
-    var id: Self {self}
+    var animatableData: Double {
+        get { Double(count) }
+        set { count = Int(max(0, newValue)) }
+    }
+    
+    var body: some View {
+        let stringToShow = String(string.prefix(count))
+        Text(stringToShow)
+    }
 }
 
-struct SpaceGameView: View {
+struct SpaceGameView1: View {
     
-    @State private var shipColor: ShipColor = ShipColor.red
-    
-    var shipColorKey = "shipColorKey"
-    
-    func getUserDefaults(){
-    }
-    
-    func setUserDefaults(){
-        
-    }
+    @State private var selectedSpaceShipColor = ""
+    private let colorKey = "colorKey"
 
+    
+    func setUserDefaults(val: String) {
+        print("Saving color to UserDefaults: \(val)")
+        UserDefaults.standard.set(val, forKey: colorKey)
+    }
+    
+    func getUserDefaults() {
+        guard let savedColor = UserDefaults.standard.string(forKey: colorKey) else { return }
+        selectedSpaceShipColor = savedColor
+    }
+    
+    func colorFromString(name: String) -> Color {
+        print("updating color: \(selectedSpaceShipColor) -> to: \(name)")
+        switch name{
+            case "red": return .red
+            case "green": return .green
+            case "blue": return .blue
+            default: return .gray
+        }
+    }
+    
     var body: some View {
-        List {
-            Picker("Ship Color", selection: $shipColor){
-                Text("red").tag(ShipColor.red)
-                Text("green").tag(ShipColor.green)
-                Text("blue").tag(ShipColor.blue)
-            }.onChange(of: shipColor){
-                UserDefaults.standard.set(shipColor, forKey: shipColorKey)
+        
+        VStack(spacing: 20) {
+
+            Text(selectedSpaceShipColor.uppercased())
+
+                .font(.largeTitle)
+                .bold()
+            
+            RoundedRectangle(cornerRadius: 20)
+                .fill(colorFromString(name: selectedSpaceShipColor))
+                .frame(width: 300, height: 300)
+                .overlay(
+                    Image("spaceShip")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(40)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.black, lineWidth: 1)
+                )
+                .shadow(radius: 5)
+            
+            HStack {
+                ForEach(["red", "green", "blue"], id: \.self) { color in
+                    Button {
+                        withAnimation{
+                            selectedSpaceShipColor = color
+                            setUserDefaults(val: color)
+                        }
+                       
+                    } label: {
+                        Circle()
+                            .fill(colorFromString(name: color))
+                            .frame(width: 80, height: 80)
+                    }
+                }
             }
-        }.onAppear(perform: getUserDefaults)
+        }
+        .padding()
+        .onAppear {
+            getUserDefaults()
+            
+        }
     }
 }
 
 #Preview {
-    SpaceGameView()
+    SpaceGameView1()
 }

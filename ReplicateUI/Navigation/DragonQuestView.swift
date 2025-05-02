@@ -96,6 +96,7 @@ struct BattleView: View {
 struct ActionShape: View {
     
     var body: some View {
+        // ## SNIPPET
         RoundedRectangle(cornerRadius: 20)
             .fill(Color.red.opacity(1.0))
             .frame(width: 200, height: 200)
