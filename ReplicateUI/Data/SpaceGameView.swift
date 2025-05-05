@@ -107,6 +107,106 @@ struct SpaceGameView1: View {
     }
 }
 
+struct SpaceShipSettings: Codable {
+    var color: String
+    var lastModified: Date
+    var name: String
+}
+
+
+/*
+ 
+ 
+ codable spaceship
+ 
+ 
+ */
+struct SpaceGameView3: View {
+    
+    let json = """
+    [{},{}]
+    """
+    
+    let data = Data(json.utf8)
+    
+    @State private var selectedSettings: SpaceShipSettings? = nil
+    @State private var shipNameInput = ""
+    
+    private let settingsKey = "spaceShipSettingsKey"
+    
+    func saveSettings() {
+        // ❌ Your task: Convert `selectedSettings` to Data using JSONEncoder
+        // ❌ Then save to UserDefaults with `settingsKey`
+    }
+    
+    func loadSettings() {
+        // ❌ Your task: Get Data from UserDefaults, decode it to `SpaceShipSettings`
+        // ❌ Then assign it to `selectedSettings`
+    }
+    
+    func colorFromString(_ name: String) -> Color {
+        switch name {
+            case "red": return .red
+            case "green": return .green
+            case "blue": return .blue
+            default: return .gray
+        }
+    }
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            if let settings = selectedSettings {
+                Text(settings.name)
+                    .font(.largeTitle)
+                    .bold()
+                
+                Text("Selected Color: \(settings.color.capitalized)")
+                    .foregroundColor(.secondary)
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(colorFromString(settings.color))
+                    .frame(width: 300, height: 300)
+                    .overlay(
+                        Image("spaceShip")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(40)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+            } else {
+                Text("No settings loaded.")
+            }
+            
+            TextField("Enter Ship Name", text: $shipNameInput)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+            
+            HStack {
+                ForEach(["red", "green", "blue"], id: \.self) { color in
+                    Button {
+                        let newSettings = SpaceShipSettings(
+                            color: color,
+                            lastModified: Date(),
+                            name: shipNameInput.isEmpty ? "Unnamed Ship" : shipNameInput
+                        )
+                        selectedSettings = newSettings
+                        saveSettings()
+                    } label: {
+                        Circle()
+                            .fill(colorFromString(color))
+                            .frame(width: 80, height: 80)
+                    }
+                }
+            }
+        }
+        .onAppear(perform: loadSettings)
+        .padding()
+    }
+}
+
 #Preview {
-    SpaceGameView1()
+    SpaceGameView3()
 }
