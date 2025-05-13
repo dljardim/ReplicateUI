@@ -157,7 +157,7 @@ struct MissingReminderChallenge: View {
     @State private var displayMessage = ""
     
     func calculate(){
-        var reminderDateComponents = DateComponents(
+        let reminderDateComponents = DateComponents(
             calendar: Calendar.current,
             year: 2025,
             month: 4,
@@ -167,7 +167,9 @@ struct MissingReminderChallenge: View {
         )
         
         // optional
-        var reminderDate:Date? = Calendar.current.date(from: reminderDateComponents)
+        let reminderDate:Date? = Calendar.current.date(
+            from: reminderDateComponents
+        )
         
         
         // format message

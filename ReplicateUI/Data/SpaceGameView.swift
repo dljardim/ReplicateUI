@@ -127,7 +127,7 @@ struct SpaceGameView3: View {
     [{},{}]
     """
     
-    let data = Data(json.utf8)
+    let data:Data
     
     @State private var selectedSettings: SpaceShipSettings? = nil
     @State private var shipNameInput = ""
@@ -207,6 +207,6 @@ struct SpaceGameView3: View {
     }
 }
 
-#Preview {
-    SpaceGameView3()
-}
+//#Preview {
+//    SpaceGameView3(Text("one"))
+//}
