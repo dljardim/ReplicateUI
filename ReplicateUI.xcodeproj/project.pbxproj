@@ -25,6 +25,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		336FE4762DD40ADA00B4ECA4 /* YesChef */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = YesChef;
+			sourceTree = "<group>";
+		};
 		33C783712DB7DA7300862762 /* ReplicateUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ReplicateUI;
@@ -56,6 +61,7 @@
 				33C783AF2DBD5D3B00862762 /* ReplicateUITerminal.xcodeproj */,
 				33C783712DB7DA7300862762 /* ReplicateUI */,
 				33C783702DB7DA7300862762 /* Products */,
+				336FE4762DD40ADA00B4ECA4 /* YesChef */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +97,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				336FE4762DD40ADA00B4ECA4 /* YesChef */,
 				33C783712DB7DA7300862762 /* ReplicateUI */,
 			);
 			name = ReplicateUI;

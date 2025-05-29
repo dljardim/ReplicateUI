@@ -18,8 +18,9 @@ struct ReplicateUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(userStore)
+//            ContentView()
+//                .environmentObject(userStore)
+            VitalsFormView()
         }
     }
 }

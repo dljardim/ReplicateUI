@@ -16,20 +16,20 @@ struct SomeListView: View {
     }
 }
 
-struct SomeForm: View {
-    let tasks = ["Task1, Task2, Task3"]
-
-    var body: some View
-    {
-        NavigationStack{
-            List(tasks, id: \.self){val in
-                NavigationLink(for)
-            }
-        }
-    }
-}
+//struct SomeForm: View {
+//    let tasks = ["Task1, Task2, Task3"]
+//
+//    var body: some View
+//    {
+//        NavigationStack{
+//            List(tasks, id: \.self){val in
+//                NavigationLink(for)
+//            }
+//        }
+//    }
+//}
 
 #Preview {
 //    SomeListView()
-    SomeForm()
+//    SomeForm()
 }
